@@ -34,7 +34,7 @@ class Phrase {
     * @param (string) letter - Letter to check
     */
     checkLetter(letter) {
-        if (this.phrase.includes(letter.textContent)) {
+        if (this.phrase.includes(letter)) {
             return true;
         } else {
             return false;
@@ -46,7 +46,7 @@ class Phrase {
     * @param (string) letter - Letter to display
     */
     showMatchedLetter(letter) {
-        const matchedLetters = document.querySelectorAll(`.${letter.textContent}`);
+        const matchedLetters = document.querySelectorAll(`.${letter}`);
         matchedLetters.forEach((match) => {
             match.classList.remove('hide');
             match.classList.add('show');

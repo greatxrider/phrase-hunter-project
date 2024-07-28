@@ -6,12 +6,14 @@ const keyboardRow = document.querySelectorAll('.keyrow');
 const game = new Game();
 
 startButton.addEventListener('click', (e) => {
+    game.reset();
     game.startGame();
 })
 
 keyboardRow.forEach((row) => {
     row.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON') {
+        const buttonClicked = e.target.closest('button');
+        if (buttonClicked) {
             game.handleInteraction(e.target);
         }
     });

@@ -1,6 +1,12 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Game.js */
+const overlay = document.getElementById('overlay');
+const scoreboard = document.getElementById('scoreboard');
+const ol = scoreboard.querySelector('ol');
+const phrase = document.getElementById('phrase');
+const ul = phrase.querySelector('ul');
+const img = ol.querySelectorAll('img');
 class Game {
     constructor() {
         this.missed = 0;
@@ -27,7 +33,6 @@ class Game {
     * Begins game by selecting a random phrase and displaying it to user
     */
     startGame() {
-        const overlay = document.getElementById('overlay');
         overlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
@@ -39,8 +44,6 @@ class Game {
     won
     */
     checkForWin() {
-        const phrase = document.getElementById('phrase');
-        const ul = phrase.querySelector('ul');
         const remainingLetters = ul.querySelectorAll('.hide').length;
         if (remainingLetters === 0) {
             return true;
@@ -56,29 +59,36 @@ class Game {
     */
     removeLife() {
         this.missed++;
-        const scoreboard = document.getElementById('scoreboard');
-        const ol = scoreboard.querySelector('ol');
-        const lastItem = ol.lastElementChild;
-        ol.removeChild(lastItem);
-        let remainingLives = ol.children.length;
+        const imgElement = ol.querySelector(`[src='images/liveHeart.png']`);
 
-        if (remainingLives > 0) {
-            remainingLives -= this.missed;
-        } else {
+        if (imgElement) {
+            imgElement.setAttribute('src', 'images/lostHeart.png');
+        }
+
+        if (this.missed === 5) {
             this.gameOver(false);
         }
-    };
+    }
 
     /**
     * Displays game over message
     * @param {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon) {
+        let message = document.getElementById('game-over-message');
+        let overlayClass = '';
+
         if (gameWon) {
-            console.log('We Won!');
+            message.innerHTML = 'Great job!';
+            overlayClass = 'win';
         } else {
-            console.log('Game Over!');
+            message.innerHTML = 'Sorry, better luck next time!';
+            overlayClass = 'lose';
         }
+
+        overlay.className = overlayClass;
+        overlay.classList.remove('start');
+        overlay.style.display = 'inherit';
     };
 
     /**
@@ -87,15 +97,40 @@ class Game {
     */
     handleInteraction(button) {
         const letter = button.textContent;
-
         if (this.activePhrase.checkLetter(letter)) {
+            button.classList.add('chosen');
             this.activePhrase.showMatchedLetter(letter);
 
             if (this.checkForWin()) {
                 this.gameOver(true);
             }
         } else {
+            button.classList.add('wrong');
             this.removeLife();
         }
+        button.disabled = true;
+    };
+
+    /**
+     * Resets the game state by performing the following actions:
+     * - Removes all children from the specified `ul` element.
+     * - Resets the class and state of each key in the keyboard rows.
+     * - Restores the images of hearts to their original state.
+     */
+    reset() {
+        while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+        }
+
+        keyboardRow.forEach((row) => {
+            for (let i = 0; i < row.children.length; i++) {
+                row.children[i].className = 'key';
+                row.children[i].disabled = false;
+            }
+        });
+
+        img.forEach((img) => {
+            img.src = 'images/liveHeart.png';
+        })
     };
 };
