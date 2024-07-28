@@ -59,12 +59,13 @@ class Game {
         const scoreboard = document.getElementById('scoreboard');
         const ol = scoreboard.querySelector('ol');
         const lastItem = ol.lastElementChild;
+        ol.removeChild(lastItem);
         let remainingLives = ol.children.length;
-        if (remainingLives === 0) {
-            this.gameOver(false);
+
+        if (remainingLives > 0) {
+            remainingLives -= this.missed;
         } else {
-            remainingLives--;
-            ol.removeChild(lastItem);
+            this.gameOver(false);
         }
     };
 
@@ -73,6 +74,28 @@ class Game {
     * @param {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon) {
-        console.log('GAME OVER BOY!');
+        if (gameWon) {
+            console.log('We Won!');
+        } else {
+            console.log('Game Over!');
+        }
+    };
+
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+    handleInteraction(button) {
+        const letter = button.textContent;
+
+        if (this.activePhrase.checkLetter(letter)) {
+            this.activePhrase.showMatchedLetter(letter);
+
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            }
+        } else {
+            this.removeLife();
+        }
     };
 };

@@ -11,17 +11,8 @@ startButton.addEventListener('click', (e) => {
 
 keyboardRow.forEach((row) => {
     row.addEventListener('click', (e) => {
-        const activePhrase = game.activePhrase;
         if (e.target.tagName === 'BUTTON') {
-            const letter = e.target;
-            console.log(activePhrase.checkLetter(letter));
-            if (activePhrase.checkLetter(letter)) {
-                activePhrase.showMatchedLetter(letter);
-            } else {
-                console.log('FAILED');
-                game.removeLife();
-            }
+            game.handleInteraction(e.target);
         }
-        game.checkForWin();
     });
 });
