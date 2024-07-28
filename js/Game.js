@@ -118,6 +118,7 @@ class Game {
      * - Restores the images of hearts to their original state.
      */
     reset() {
+        this.missed = 0;
         while (ul.firstChild) {
             ul.removeChild(ul.firstChild);
         }
