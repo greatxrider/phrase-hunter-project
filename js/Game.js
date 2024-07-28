@@ -39,7 +39,14 @@ class Game {
     won
     */
     checkForWin() {
-
+        const phrase = document.getElementById('phrase');
+        const ul = phrase.querySelector('ul');
+        const remainingLetters = ul.querySelectorAll('.hide').length;
+        if (remainingLetters === 0) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     /**
@@ -51,12 +58,13 @@ class Game {
         this.missed++;
         const scoreboard = document.getElementById('scoreboard');
         const ol = scoreboard.querySelector('ol');
-        const remainingLives = ol.children.length;
-
-        if (remainingLives > 0) {
-            remainingLives -= this.missed;
+        const lastItem = ol.lastElementChild;
+        let remainingLives = ol.children.length;
+        if (remainingLives === 0) {
+            this.gameOver(false);
         } else {
-            this.gameOver
+            remainingLives--;
+            ol.removeChild(lastItem);
         }
     };
 
@@ -65,6 +73,6 @@ class Game {
     * @param {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon) {
-
+        console.log('GAME OVER BOY!');
     };
 };

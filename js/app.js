@@ -14,14 +14,14 @@ keyboardRow.forEach((row) => {
         const activePhrase = game.activePhrase;
         if (e.target.tagName === 'BUTTON') {
             const letter = e.target;
+            console.log(activePhrase.checkLetter(letter));
             if (activePhrase.checkLetter(letter)) {
                 activePhrase.showMatchedLetter(letter);
             } else {
+                console.log('FAILED');
                 game.removeLife();
             }
         }
-        if (game.checkForWin) {
-            
-        }
+        game.checkForWin();
     });
 });
