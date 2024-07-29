@@ -3,7 +3,7 @@
 ## Overview
 This project is a browser-based, word guessing game: "Phrase Hunter." It uses JavaScript and OOP (Object-Oriented Programming) to select a random, hidden phrase, which a player tries to guess, by clicking letters on an onscreen keyboard.
 
-This project, show off my skills, a fun app, and a good understanding of the principles of Object-Oriented Programming.
+This project showcases my skills in creating a fun app while demonstrating a good understanding of the principles of Object-Oriented Programming.
 
 ## Table of Contents
 1. [Features](#features)
@@ -61,6 +61,7 @@ phrase-hunter-project/
 └── README.md
 
 ## Additional Notes
+
 - **Code Comments**: Replace provided comments with your own to describe your code.
 - **Code Readability**: Ensure consistent spacing and indentation.
 - **Quality Assurance Testing**: Test all functionality and monitor the console for bugs.
