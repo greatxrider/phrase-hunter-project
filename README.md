@@ -21,7 +21,9 @@ This project showcases my skills in creating a fun app while demonstrating a goo
 - **Heart Display**: Tracks the player's remaining lives.
 - **Dynamic Phrase Display**: Updates the display based on player guesses.
 - **Keyboard Functionality**: Allows players to use their physical keyboard to guess letters (Extra Credit).
-- **Custom Styles**: Experiment with styles like color, background color, font, borders, shadows, transitions, animations, and filters (Extra Credit).
+- **Custom Styles**: Experiment with styles like color, background color, font, borders, shadows, transitions, animations, and filters.
+  - The background color transitions to green upon winning and to red when an incorrect choice is made.
+  - The button color transitions to green when the choice is correct and to red when the choice is incorrect.
 
 ## Installation
 1. Create a GitHub repo for this project.
@@ -66,10 +68,6 @@ phrase-hunter-project/
 - **Code Readability**: Ensure consistent spacing and indentation.
 - **Quality Assurance Testing**: Test all functionality and monitor the console for bugs.
 - **Resetting the Game**: Remove all `li` elements from the phrase `ul` element, enable all keyboard buttons, and reset heart images between games.
-
-## Extra Credit Features
-- **Keyboard Functionality**: Allow players to use their physical keyboard to enter guesses.
-- **Custom Styles**: Make the project your own with custom styles and document these changes in the README and submission notes.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
