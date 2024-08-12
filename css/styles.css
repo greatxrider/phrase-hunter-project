@@ -30,7 +30,9 @@ body {
   height: 100vh;
 }
 
-li, ol, ul {
+li,
+ol,
+ul {
   padding: 0;
   display: inline-block;
 }
@@ -61,8 +63,8 @@ button {
 }
 
 #btn__reset {
-	width: 200px;
-	margin: 0 auto;
+  width: 200px;
+  margin: 0 auto;
 }
 
 .main-container {
@@ -79,7 +81,7 @@ button {
   padding: 10px;
 }
 
-#phrase ul li{
+#phrase ul li {
   margin-top: 15px;
 }
 
@@ -200,4 +202,17 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #f8f9fa;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
 }
